@@ -7,8 +7,11 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Moves : MonoBehaviour
+
+//public enum Behaviors { pursue, evade, wander, hide }
+public class Movements : MonoBehaviour
 {
+    //public Behaviors currentBehavior = Behaviors.wander;
     public GameObject target;
     public Collider floor;
     GameObject[] hidingSpots;
@@ -19,6 +22,25 @@ public class Moves : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         hidingSpots = GameObject.FindGameObjectsWithTag("Hide");
     }
+
+    //void Update()
+    //{
+    //    switch (currentBehavior)
+    //    {
+    //        case Behaviors.wander:
+    //            Wander();
+    //            break;
+    //        case Behaviors.pursue:
+    //            Pursue();
+    //            break;
+    //        case Behaviors.hide:
+    //            Hide();
+    //            break;
+    //        case Behaviors.evade:
+    //            Evade();
+    //            break;
+    //    }
+    //}
 
     public void Seek(Vector3 location)
     {
@@ -115,36 +137,5 @@ public class Moves : MonoBehaviour
 
         Seek(info.point + chosenDir.normalized);
 
-    }
-
-    public Vector3 HideValue()
-    {
-        float dist = Mathf.Infinity;
-        Vector3 chosenSpot = Vector3.zero;
-        Vector3 chosenDir = Vector3.zero;
-        GameObject chosenGO = hidingSpots[0];
-
-        for (int i = 0; i < hidingSpots.Length; i++)
-        {
-            Vector3 hideDir = hidingSpots[i].transform.position - target.transform.position;
-            Vector3 hidePos = hidingSpots[i].transform.position + hideDir.normalized * 100;
-
-            if (Vector3.Distance(target.transform.position, hidePos) < dist)
-            {
-                chosenSpot = hidePos;
-                chosenDir = hideDir;
-                chosenGO = hidingSpots[i];
-                dist = Vector3.Distance(this.transform.position, hidePos);
-            }
-        }
-
-        Collider hideCol = chosenGO.GetComponent<Collider>();
-        Ray backRay = new Ray(chosenSpot, -chosenDir.normalized);
-        RaycastHit info;
-        float distance = 250.0f;
-        hideCol.Raycast(backRay, out info, distance);
-
-
-        return info.point + chosenDir.normalized;
     }
 }
