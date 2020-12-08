@@ -5,5 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Complete/Scenes/CompleteMainScene.unity
+    guid: 53dbee9b5f0f43642ab7e99460ca86d2
+  m_configObjects: {}
