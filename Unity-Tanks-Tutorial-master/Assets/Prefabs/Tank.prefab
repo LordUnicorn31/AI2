@@ -998,7 +998,7 @@ MonoBehaviour:
   maxTasksPerTick: 500
   behavior: {fileID: 11400000, guid: 3670ebc6c06b63d4a93bc3c3134c2af3, type: 2}
   paused: 0
-  restartWhenFinished: 0
+  restartWhenFinished: 1
   blackboard:
     intParams: 
     intParamsNames: []
@@ -1030,8 +1030,10 @@ MonoBehaviour:
     vector2Params: []
     vector2ParamsNames: []
     vector2ParamsLostDefaultValue: 
-    vector3Params: []
-    vector3ParamsNames: []
+    vector3Params:
+    - {x: 0, y: 0, z: 0}
+    vector3ParamsNames:
+    - rechargeLocation
     vector3ParamsLostDefaultValue: 
     vector4Params: []
     vector4ParamsNames: []
@@ -1073,6 +1075,8 @@ MonoBehaviour:
   m_MinLaunchForce: 15
   m_MaxLaunchForce: 30
   m_MaxChargeTime: 0.75
+  remainingBullets: 0
+  maxBullets: 3
 --- !u!1 &163644
 GameObject:
   m_ObjectHideFlags: 0

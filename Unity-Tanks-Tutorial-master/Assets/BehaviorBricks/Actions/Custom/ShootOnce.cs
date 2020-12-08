@@ -5,8 +5,7 @@ using Pada1.BBCore.Tasks;     // TaskStatus
 using Pada1.BBCore.Framework; // BasePrimitiveAction
 
 [Action("MyActions/ShootOnce")]
-[Help("Clone a 'bullet' and shoots it through the Forward axis with the " +
-      "specified velocity.")]
+[Help("Fire one bullet")]
 public class ShootOnce : BasePrimitiveAction
 {
     // Define the input parameter "shootPoint".

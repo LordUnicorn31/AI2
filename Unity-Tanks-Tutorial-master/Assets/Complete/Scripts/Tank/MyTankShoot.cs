@@ -21,6 +21,11 @@ public class MyTankShoot : MonoBehaviour
     private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
     private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
 
+    [HideInInspector]
+    public int remainingBullets;
+    public int maxBullets = 3;
+
+
 
     private void OnEnable()
     {
@@ -37,6 +42,8 @@ public class MyTankShoot : MonoBehaviour
 
         // The rate that the launch force charges up is the range of possible forces by the max charge time.
         m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
+
+        remainingBullets = maxBullets;
     }
 
 
@@ -98,6 +105,8 @@ public class MyTankShoot : MonoBehaviour
 
         // Reset the launch force.  This is a precaution in case of missing button events.
         m_CurrentLaunchForce = m_MinLaunchForce;
+
+        --remainingBullets;
     }
 }
 
