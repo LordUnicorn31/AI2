@@ -23,7 +23,7 @@ public class TankManager
 
 
     private Movements m_Movement;                        // Reference to tank's movement script, used to disable and enable control.
-    //private TankShooting m_Shooting;                        // Reference to tank's shooting script, used to disable and enable control.
+    private MyTankShoot m_Shooting;                        // Reference to tank's shooting script, used to disable and enable control.
     private GameObject m_CanvasGameObject;                  // Used to disable the world space UI during the Starting and Ending phases of each round.
 
 
@@ -31,12 +31,12 @@ public class TankManager
     {
         // Get references to the components.
         m_Movement = m_Instance.GetComponent<Movements>();
-        //m_Shooting = m_Instance.GetComponent<TankShooting>();
+        m_Shooting = m_Instance.GetComponent<MyTankShoot>();
         m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
 
         // Set the player numbers to be consistent across the scripts.
         //m_Movement.m_PlayerNumber = m_PlayerNumber;
-        //m_Shooting.m_PlayerNumber = m_PlayerNumber;
+        m_Shooting.m_PlayerNumber = m_PlayerNumber;
 
         // Create a string using the correct color that says 'PLAYER 1' etc based on the tank's color and the player's number.
         m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
@@ -59,7 +59,7 @@ public class TankManager
     public void DisableControl()
     {
         m_Movement.enabled = false;
-        //m_Shooting.enabled = false;
+        m_Shooting.enabled = false;
 
         m_CanvasGameObject.SetActive(false);
     }
@@ -69,7 +69,7 @@ public class TankManager
     public void EnableControl()
     {
         m_Movement.enabled = true;
-        //m_Shooting.enabled = true;
+        m_Shooting.enabled = true;
 
         m_CanvasGameObject.SetActive(true);
     }

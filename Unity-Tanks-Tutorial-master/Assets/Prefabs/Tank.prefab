@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 6652381688154942555}
   - component: {fileID: 3049087267184856586}
   - component: {fileID: 1455721162655120134}
+  - component: {fileID: 5930531911135602505}
   m_Layer: 9
   m_Name: Tank
   m_TagString: Untagged
@@ -977,8 +978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e40d581ed6fa3459a34b90dbde76a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentBehavior: 0
   target: {fileID: 0}
   floor: {fileID: 0}
+  freq: 0
+  updateTime: 1
 --- !u!114 &1455721162655120134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,8 +1015,12 @@ MonoBehaviour:
     colorParams: []
     colorParamsNames: []
     colorParamsLostDefaultValue: 
-    objectParams: []
-    objectParamsNames: []
+    objectParams:
+    - {fileID: 0}
+    - {fileID: 0}
+    objectParamsNames:
+    - targetTank
+    - Me
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -1043,6 +1051,28 @@ MonoBehaviour:
     quaternionParams: []
     quaternionParamsNames: []
     quaternionParamsLostDefaultValue: 
+--- !u!114 &5930531911135602505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee6b2c64aee96d4b8c2bb7469e6efcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerNumber: 1
+  m_Shell: {fileID: 5474262, guid: 3fe0638d19a65454da3f5af11ee798ea, type: 3}
+  m_FireTransform: {fileID: 413676}
+  m_AimSlider: {fileID: 11488944}
+  m_ShootingAudio: {fileID: 8253464}
+  m_ChargingClip: {fileID: 8300000, guid: c17f124fcdc0f5446a72f793898bd74b, type: 3}
+  m_FireClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
+  m_MinLaunchForce: 15
+  m_MaxLaunchForce: 30
+  m_MaxChargeTime: 0.75
 --- !u!1 &163644
 GameObject:
   m_ObjectHideFlags: 0
