@@ -47,6 +47,10 @@ namespace Complete
                 m_Tanks[i].m_PlayerNumber = i + 1;
                 m_Tanks[i].Setup();
             }
+            m_Tanks[0].m_Instance.GetComponent<BehaviorExecutor>().SetBehaviorParam("targetTank", m_Tanks[1].m_Instance);
+            m_Tanks[1].m_Instance.GetComponent<BehaviorExecutor>().SetBehaviorParam("targetTank", m_Tanks[0].m_Instance);
+            m_Tanks[0].m_Instance.GetComponent<BehaviorExecutor>().SetBehaviorParam("Me", m_Tanks[0].m_Instance);
+            m_Tanks[1].m_Instance.GetComponent<BehaviorExecutor>().SetBehaviorParam("Me", m_Tanks[1].m_Instance);
         }
 
 

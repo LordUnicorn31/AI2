@@ -46,6 +46,7 @@ namespace Complete
                 // ... set their material color to the color specific to this tank.
                 renderers[i].material.color = m_PlayerColor;
             }
+            m_Movement.floor = GameObject.Find("GroundPlane").GetComponent<MeshCollider>();
         }
 
 

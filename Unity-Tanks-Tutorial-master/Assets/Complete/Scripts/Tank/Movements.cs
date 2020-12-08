@@ -8,12 +8,16 @@
 using UnityEngine.AI;
 
 
-//public enum Behaviors { pursue, evade, wander, hide }
+public enum Behaviors { none, pursue, evade, wander, hide }
 public class Movements : MonoBehaviour
 {
-    //public Behaviors currentBehavior = Behaviors.wander;
+    public Behaviors currentBehavior;
     public GameObject target;
     public Collider floor;
+    [HideInInspector]
+    public float freq = 0f;
+    [HideInInspector]
+    public float updateTime = 1f;
     GameObject[] hidingSpots;
     NavMeshAgent agent;
 
@@ -21,26 +25,36 @@ public class Movements : MonoBehaviour
     {
         agent = this.GetComponent<NavMeshAgent>();
         hidingSpots = GameObject.FindGameObjectsWithTag("Hide");
+        currentBehavior = Behaviors.none;
     }
 
-    //void Update()
-    //{
-    //    switch (currentBehavior)
-    //    {
-    //        case Behaviors.wander:
-    //            Wander();
-    //            break;
-    //        case Behaviors.pursue:
-    //            Pursue();
-    //            break;
-    //        case Behaviors.hide:
-    //            Hide();
-    //            break;
-    //        case Behaviors.evade:
-    //            Evade();
-    //            break;
-    //    }
-    //}
+    void Update()
+    {
+
+        freq += Time.deltaTime;
+        if (freq >= updateTime)
+        {
+            freq = 0f;
+
+            switch (currentBehavior)
+            {
+                case Behaviors.none:
+                    break;
+                case Behaviors.wander:
+                    Wander();
+                    break;
+                case Behaviors.pursue:
+                    Pursue();
+                    break;
+                case Behaviors.hide:
+                    Hide();
+                    break;
+                case Behaviors.evade:
+                    Evade();
+                    break;
+            }
+        }
+    }
 
     public void Seek(Vector3 location)
     {
