@@ -48,7 +48,7 @@ public class MyTankShoot : MonoBehaviour
 
 
     private void Update()
-    {
+      {
         // The slider should have a default value of the minimum launch force.
         m_AimSlider.value = m_MinLaunchForce;
 
